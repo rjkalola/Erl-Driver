@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="info"
+            type="com.app.erldriver.model.entity.info.OrderItemInfo" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/_15sdp">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/VerySmallFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:text="@{info.name}"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/_10ssp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvServiceList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            style="@style/Divider"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/colorYellowDark" />
+
+    </LinearLayout>
+</layout>
+
+
