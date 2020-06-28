@@ -3,7 +3,7 @@ package com.app.erldriver.viewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.app.erldriver.ERLApp;
-import com.app.erldriver.model.entity.response.ClientDashBoardResponse;
+import com.app.erldriver.model.entity.response.DashBoardResponse;
 import com.app.erldriver.model.entity.response.OurServicesResponse;
 import com.app.erldriver.model.entity.response.PrivacyPolicyResponse;
 import com.app.erldriver.model.entity.response.ServiceItemsResponse;
@@ -22,7 +22,7 @@ public class DashBoardViewModel extends BaseViewModel {
     @Inject
     DashBoardServiceInterface dashBoardServiceInterface;
 
-    private MutableLiveData<ClientDashBoardResponse> clientDashBoardResponse;
+    private MutableLiveData<DashBoardResponse> dashBoardResponse;
     private MutableLiveData<ServiceItemsResponse> serviceItemsResponse;
     private MutableLiveData<PrivacyPolicyResponse> privacyPolicyResponse;
     private MutableLiveData<StoreLocatorResponse> storeLocatorResponse;
@@ -32,15 +32,15 @@ public class DashBoardViewModel extends BaseViewModel {
         ERLApp.getServiceComponent().inject(this);
     }
 
-    public void getClientDashboardRequest() {
+    public void getDashboardRequest() {
         if (view != null) {
             view.showProgress();
         }
-        new RXRetroManager<ClientDashBoardResponse>() {
+        new RXRetroManager<DashBoardResponse>() {
             @Override
-            protected void onSuccess(ClientDashBoardResponse response) {
+            protected void onSuccess(DashBoardResponse response) {
                 if (view != null) {
-                    clientDashBoardResponse.postValue(response);
+                    dashBoardResponse.postValue(response);
                     view.hideProgress();
                 }
             }
@@ -53,7 +53,7 @@ public class DashBoardViewModel extends BaseViewModel {
                     view.hideProgress();
                 }
             }
-        }.rxSingleCall(dashBoardServiceInterface.getClientDashboard());
+        }.rxSingleCall(dashBoardServiceInterface.getDashboard());
     }
 
     public void getServiceItemsRequest() {
@@ -160,11 +160,11 @@ public class DashBoardViewModel extends BaseViewModel {
         }.rxSingleCall(dashBoardServiceInterface.getStoreLocator());
     }
 
-    public MutableLiveData<ClientDashBoardResponse> clientDashBoardResponse() {
-        if (clientDashBoardResponse == null) {
-            clientDashBoardResponse = new MutableLiveData<>();
+    public MutableLiveData<DashBoardResponse> dashBoardResponse() {
+        if (dashBoardResponse == null) {
+            dashBoardResponse = new MutableLiveData<>();
         }
-        return clientDashBoardResponse;
+        return dashBoardResponse;
     }
 
     public MutableLiveData<ServiceItemsResponse> serviceItemsResponse() {

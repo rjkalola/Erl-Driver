@@ -68,7 +68,7 @@
                     android:layout_marginTop="@dimen/_12sdp"
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="center"
-                    android:text="@string/lbl_thank_you"
+                    android:text="@string/lbl_done"
                     android:textAllCaps="true"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/_16ssp" />
@@ -79,6 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:fontFamily="@font/montserrat_regular"
+                    android:visibility="gone"
                     android:gravity="center"
                     android:text="@string/msg_your_order_has_been_successfully_placed"
                     android:textColor="@color/colorPrimaryText"

@@ -3,17 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".DashboardActivity">
-
-        <com.app.erldriver.util.ViewPagerDisableSwipe
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/divider" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,141 +42,45 @@
 
         </LinearLayout>
 
-        <View
-            android:id="@+id/divider"
-            style="@style/Divider"
-            android:layout_above="@+id/routTabsView"
-            android:visibility="visible" />
-
         <LinearLayout
-            android:id="@+id/routTabsView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimaryText"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:visibility="visible">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/routHomeTab"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+            <TextView
+                android:id="@+id/txtPickUps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_50sdp"
+                android:background="@drawable/img_dashboard_button_bg"
+                android:fontFamily="@font/montserrat_semi_bold"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:paddingTop="@dimen/_9sdp"
-                android:paddingBottom="@dimen/_9sdp">
+                android:padding="@dimen/_11ssp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:text="@string/lbl_pick_ups"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/_14ssp" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="@dimen/_16sdp"
-                    android:layout_height="@dimen/_16sdp"
-                    app:srcCompat="@drawable/ic_home_tab" />
-
-                <TextView
-                    style="@style/VerySmallFontTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:gravity="center"
-                    android:text="@string/lbl_home"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_8ssp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/routPriceListTab"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+            <TextView
+                android:id="@+id/txtDrops"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_50sdp"
+                android:background="@drawable/img_dashboard_button_bg"
+                android:fontFamily="@font/montserrat_semi_bold"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:paddingTop="@dimen/_9sdp"
-                android:paddingBottom="@dimen/_9sdp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="@dimen/_16sdp"
-                    android:layout_height="@dimen/_16sdp"
-                    app:srcCompat="@drawable/ic_price_list_tab" />
-
-                <TextView
-                    style="@style/VerySmallFontTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:gravity="center"
-                    android:text="@string/lbl_price_list"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_8ssp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/routMyOrderTab"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingTop="@dimen/_9sdp"
-                android:paddingBottom="@dimen/_9sdp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="@dimen/_16sdp"
-                    android:layout_height="@dimen/_16sdp"
-                    app:srcCompat="@drawable/ic_my_order_tab" />
-
-                <TextView
-                    style="@style/VerySmallFontTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:gravity="center"
-                    android:text="@string/my_order"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_8ssp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/routWalletTab"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingTop="@dimen/_9sdp"
-                android:paddingBottom="@dimen/_9sdp">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="@dimen/_16sdp"
-                    android:layout_height="@dimen/_16sdp"
-                    app:srcCompat="@drawable/ic_wallet_tab" />
-
-                <TextView
-                    style="@style/VerySmallFontTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:gravity="center"
-                    android:text="@string/lbl_wallet"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/_8ssp" />
-
-            </LinearLayout>
+                android:padding="@dimen/_11ssp"
+                android:text="@string/lbl_drops"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/_14ssp" />
 
         </LinearLayout>
 
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </layout>

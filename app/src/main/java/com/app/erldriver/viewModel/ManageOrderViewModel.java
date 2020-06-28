@@ -11,9 +11,14 @@ import com.app.erldriver.model.entity.response.OrderResourcesResponse;
 import com.app.erldriver.model.state.ManageOrderInterface;
 import com.app.erldriver.network.RXRetroManager;
 import com.app.erldriver.network.RetrofitException;
+import com.app.erldriver.util.AppConstant;
 import com.app.erldriver.util.ResourceProvider;
 
 import javax.inject.Inject;
+
+import io.reactivex.Observable;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public class ManageOrderViewModel extends BaseViewModel {
     @Inject
@@ -79,10 +84,19 @@ public class ManageOrderViewModel extends BaseViewModel {
         }.rxSingleCall(manageOrderInterface.placeOrder(saveOrderRequest));
     }
 
-    public void getClientOrders(int limit, int offset, boolean isProgress) {
+
+    public void getOrders(int limit, int offset, boolean isProgress, int orderType) {
         if (view != null && isProgress) {
             view.showProgress();
         }
+
+        Observable<OrderListResponse> observable = null;
+        if (orderType == AppConstant.Type.ORDER_PICKUPS) {
+            observable = manageOrderInterface.pickUpOrders();
+        } else if (orderType == AppConstant.Type.ORDER_DROPS) {
+            observable = manageOrderInterface.dropOrders();
+        }
+
         new RXRetroManager<OrderListResponse>() {
             @Override
             protected void onSuccess(OrderListResponse response) {
@@ -100,7 +114,7 @@ public class ManageOrderViewModel extends BaseViewModel {
                     view.hideProgress();
                 }
             }
-        }.rxSingleCall(manageOrderInterface.clientOrders(limit, offset));
+        }.rxSingleCall(observable);
     }
 
     public void clientCancelOrders(int id) {
@@ -151,6 +165,60 @@ public class ManageOrderViewModel extends BaseViewModel {
         }.rxSingleCall(manageOrderInterface.clientOrderDetails(orderId));
     }
 
+    public void pickedUpOrderRequest(int id, String note) {
+        RequestBody idBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(id));
+        RequestBody noteBody = RequestBody.create(MediaType.parse("text/plain"), note);
+
+        if (view != null) {
+            view.showProgress();
+        }
+        new RXRetroManager<BaseResponse>() {
+            @Override
+            protected void onSuccess(BaseResponse response) {
+                if (view != null) {
+                    mBaseResponse.postValue(response);
+                    view.hideProgress();
+                }
+            }
+
+            @Override
+            protected void onFailure(RetrofitException retrofitException, String errorCode) {
+                super.onFailure(retrofitException, errorCode);
+                if (view != null) {
+                    view.showApiError(retrofitException, errorCode);
+                    view.hideProgress();
+                }
+            }
+        }.rxSingleCall(manageOrderInterface.pickedUpOrder(idBody, noteBody));
+    }
+
+    public void deliveredOrderRequest(int id, String note) {
+        RequestBody idBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(id));
+        RequestBody noteBody = RequestBody.create(MediaType.parse("text/plain"), note);
+
+        if (view != null) {
+            view.showProgress();
+        }
+        new RXRetroManager<BaseResponse>() {
+            @Override
+            protected void onSuccess(BaseResponse response) {
+                if (view != null) {
+                    mBaseResponse.postValue(response);
+                    view.hideProgress();
+                }
+            }
+
+            @Override
+            protected void onFailure(RetrofitException retrofitException, String errorCode) {
+                super.onFailure(retrofitException, errorCode);
+                if (view != null) {
+                    view.showApiError(retrofitException, errorCode);
+                    view.hideProgress();
+                }
+            }
+        }.rxSingleCall(manageOrderInterface.deliveredOrder(idBody,noteBody));
+    }
+
     public MutableLiveData<BaseResponse> mBaseResponse() {
         if (mBaseResponse == null) {
             mBaseResponse = new MutableLiveData<>();
@@ -178,7 +246,6 @@ public class ManageOrderViewModel extends BaseViewModel {
         }
         return mOrderDetailsResponse;
     }
-
 
 
     public SaveOrderRequest getSaveOrderRequest() {

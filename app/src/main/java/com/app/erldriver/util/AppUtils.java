@@ -25,6 +25,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
@@ -64,6 +65,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import static com.app.erldriver.ERLApp.getContext;
 import static com.app.erldriver.util.AppConstant.IMAGE_QUALITY;
 import static com.app.erldriver.util.AppConstant.MAX_IMAGE_HEIGHT;
 import static com.app.erldriver.util.AppConstant.MAX_IMAGE_WIDTH;
@@ -672,5 +674,16 @@ public final class AppUtils {
         }
 
         return intent;
+    }
+
+    public static String getDeviceUniqueId() {
+        try {
+            String android_id = Settings.Secure.getString(getContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+            return android_id;
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

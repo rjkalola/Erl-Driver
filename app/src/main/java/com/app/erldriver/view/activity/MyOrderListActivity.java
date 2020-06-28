@@ -16,7 +16,6 @@ import com.app.erldriver.R;
 import com.app.erldriver.adapter.MyOrderListAdapter;
 import com.app.erldriver.callback.SelectItemListener;
 import com.app.erldriver.databinding.ActivityMyOrderListBinding;
-import com.app.erldriver.databinding.ActivitySelectAddressBinding;
 import com.app.erldriver.model.entity.response.OrderListResponse;
 import com.app.erldriver.util.AppConstant;
 import com.app.erldriver.util.AppUtils;
@@ -32,7 +31,7 @@ public class MyOrderListActivity extends BaseActivity implements View.OnClickLis
     private OrderListResponse ordersData;
     private MyOrderListAdapter adapter;
     private ManageOrderViewModel manageOrderViewModel;
-    private int pastVisibleItems, visibleItemCount, totalItemCount, offset = 0;
+    private int pastVisibleItems, visibleItemCount, totalItemCount, offset = 0, orderType;
     private boolean loading = true, mIsLastPage = false;
 
     @Override
@@ -53,7 +52,14 @@ public class MyOrderListActivity extends BaseActivity implements View.OnClickLis
             loadData(false);
         });
 
-        loadData(true);
+        getIntentData();
+    }
+
+    public void getIntentData() {
+        if (getIntent().getExtras() != null) {
+            orderType = getIntent().getIntExtra(AppConstant.IntentKey.ORDER_TYPE, 0);
+            loadData(true);
+        }
     }
 
     @Override
@@ -66,7 +72,16 @@ public class MyOrderListActivity extends BaseActivity implements View.OnClickLis
     }
 
     public void loadData(boolean showProgress) {
-        manageOrderViewModel.getClientOrders(10, offset, showProgress);
+        switch (orderType) {
+            case AppConstant.Type.ORDER_PICKUPS:
+                binding.txtTitle.setText(getString(R.string.lbl_pick_up_order));
+                manageOrderViewModel.getOrders(10, offset, showProgress, AppConstant.Type.ORDER_PICKUPS);
+                break;
+            case AppConstant.Type.ORDER_DROPS:
+                binding.txtTitle.setText(getString(R.string.lbl_drop_order));
+                manageOrderViewModel.getOrders(10, offset, showProgress, AppConstant.Type.ORDER_DROPS);
+                break;
+        }
     }
 
     private void setAddressAdapter() {
@@ -156,6 +171,7 @@ public class MyOrderListActivity extends BaseActivity implements View.OnClickLis
             case AppConstant.Action.VIEW_ORDER:
                 Bundle bundle = new Bundle();
                 bundle.putInt(AppConstant.IntentKey.ORDER_ID, adapter.getList().get(adapter.getPosition()).getId());
+                bundle.putInt(AppConstant.IntentKey.ORDER_TYPE, orderType);
                 moveActivityForResult(mContext, MyOrderDetailsActivity.class, false, false, AppConstant.IntentKey.VIEW_ORDER, bundle);
                 break;
         }

@@ -66,6 +66,7 @@ public final class AppConstant {
         public static final int REQUEST_CAMERA_KITKAT = 10;
         public static final int EXTERNAL_STORAGE_PERMISSION = 11;
         public static final int VIEW_CART = 12;
+
     }
 
     public static final class AppLanguage {
@@ -85,6 +86,8 @@ public final class AppConstant {
         public static final int TERMS_CONDITIONS = 1;
         public static final int PRIVACY_POLICY = 2;
         public static final int OUR_SERVICES = 3;
+        public static final int ORDER_PICKUPS = 1;
+        public static final int ORDER_DROPS = 2;
     }
 
     public static final class LocationMode {

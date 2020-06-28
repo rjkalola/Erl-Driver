@@ -1,7 +1,7 @@
 package com.app.erldriver.model.state;
 
 
-import com.app.erldriver.model.entity.response.ClientDashBoardResponse;
+import com.app.erldriver.model.entity.response.DashBoardResponse;
 import com.app.erldriver.model.entity.response.OurServicesResponse;
 import com.app.erldriver.model.entity.response.PrivacyPolicyResponse;
 import com.app.erldriver.model.entity.response.ServiceItemsResponse;
@@ -11,8 +11,8 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 
 public interface DashBoardServiceInterface {
-    @GET("client-dashboard")
-    Observable<ClientDashBoardResponse> getClientDashboard();
+    @GET("dashboard")
+    Observable<DashBoardResponse> getDashboard();
 
     @GET("get-service-items")
     Observable<ServiceItemsResponse> getServiceItems();

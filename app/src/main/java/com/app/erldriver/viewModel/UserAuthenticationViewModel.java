@@ -15,6 +15,7 @@ import com.app.erldriver.model.state.UserAuthenticationServiceInterface;
 import com.app.erldriver.network.RXRetroManager;
 import com.app.erldriver.network.RetrofitException;
 import com.app.erldriver.util.AppConstant;
+import com.app.erldriver.util.AppUtils;
 import com.app.erldriver.util.ResourceProvider;
 import com.app.utilities.utils.StringHelper;
 
@@ -48,6 +49,8 @@ public class UserAuthenticationViewModel extends BaseViewModel {
     }
 
     public void sendLoginRequest() {
+        loginRequest.setDevice_token(AppUtils.getDeviceUniqueId());
+
         if (view != null) {
             view.showProgress();
         }

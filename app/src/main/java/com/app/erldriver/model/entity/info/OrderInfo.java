@@ -1,18 +1,12 @@
 
 package com.app.erldriver.model.entity.info;
 
-import com.app.erldriver.model.entity.request.SaveAddressRequest;
-
 import org.parceler.Parcel;
-
-import java.util.List;
 
 @Parcel
 public class OrderInfo {
-    int id, status_id;
-    String order_no, pickup_date, pickup_time, delivery_note, total_price, ordered_at, status,payment_type,order_type;
-    List<ServiceItemInfo> order;
-    SaveAddressRequest info;
+    int id;
+    String order_no,name ,phone , address, street, landmark, area_name,city_name,latitude,longitude,pickup_date,pickup_time,status,order_type;
 
     public int getId() {
         return id;
@@ -22,20 +16,84 @@ public class OrderInfo {
         this.id = id;
     }
 
-    public int getStatus_id() {
-        return status_id;
-    }
-
-    public void setStatus_id(int status_id) {
-        this.status_id = status_id;
-    }
-
     public String getOrder_no() {
         return order_no;
     }
 
     public void setOrder_no(String order_no) {
         this.order_no = order_no;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getLandmark() {
+        return landmark;
+    }
+
+    public void setLandmark(String landmark) {
+        this.landmark = landmark;
+    }
+
+    public String getArea_name() {
+        return area_name;
+    }
+
+    public void setArea_name(String area_name) {
+        this.area_name = area_name;
+    }
+
+    public String getCity_name() {
+        return city_name;
+    }
+
+    public void setCity_name(String city_name) {
+        this.city_name = city_name;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getPickup_date() {
@@ -54,30 +112,6 @@ public class OrderInfo {
         this.pickup_time = pickup_time;
     }
 
-    public String getDelivery_note() {
-        return delivery_note;
-    }
-
-    public void setDelivery_note(String delivery_note) {
-        this.delivery_note = delivery_note;
-    }
-
-    public String getTotal_price() {
-        return total_price;
-    }
-
-    public void setTotal_price(String total_price) {
-        this.total_price = total_price;
-    }
-
-    public String getOrdered_at() {
-        return ordered_at;
-    }
-
-    public void setOrdered_at(String ordered_at) {
-        this.ordered_at = ordered_at;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -86,36 +120,12 @@ public class OrderInfo {
         this.status = status;
     }
 
-    public String getPayment_type() {
-        return payment_type;
-    }
-
-    public void setPayment_type(String payment_type) {
-        this.payment_type = payment_type;
-    }
-
     public String getOrder_type() {
         return order_type;
     }
 
     public void setOrder_type(String order_type) {
         this.order_type = order_type;
-    }
-
-    public List<ServiceItemInfo> getOrder() {
-        return order;
-    }
-
-    public void setOrder(List<ServiceItemInfo> order) {
-        this.order = order;
-    }
-
-    public SaveAddressRequest getInfo() {
-        return info;
-    }
-
-    public void setInfo(SaveAddressRequest info) {
-        this.info = info;
     }
 }
 

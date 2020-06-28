@@ -39,8 +39,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         binding.setUserAuthenticationViewModel(userAuthenticationViewModel);
 
         binding.txtLogin.setOnClickListener(this);
-        binding.txtRegisterHere.setOnClickListener(this);
-        binding.txtForgotPassword.setOnClickListener(this);
     }
 
     @Override

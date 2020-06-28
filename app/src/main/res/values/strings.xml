@@ -131,6 +131,7 @@
     <string name="lbl_number_of_paces">Number of Paces:</string>
     <string name="lbl_view_more">View More</string>
     <string name="lbl_delivery_time">Delivery Time:</string>
+    <string name="lbl_delivery_note">Delivery Note:</string>
     <string name="lbl_total_paces">Total Paces:</string>
     <string name="lbl_total_price">Total Price:</string>
     <string name="msg_currently_no_service_available">Currently there are no service available in your area. Please change address</string>
@@ -148,6 +149,7 @@
     <string name="lbl_crop_image">Crop Image</string>
     <string name="msg_clear_cart">Are you sure want to change service type? Once you changed service type your cart will be clear.</string>
     <string name="lbl_thank_you">Thank You</string>
+    <string name="lbl_done">Done</string>
     <string name="msg_your_order_has_been_successfully_placed">Your order has been successfully placed.</string>
     <string name="hint_say_something">Say Something&#8230;</string>
     <string name="lbl_order_summery">Order Summary</string>
@@ -157,6 +159,9 @@
     <string name="lbl_total_payable_amount">Total payable amount is:</string>
     <string name="lbl_total">Total</string>
     <string name="lbl_select_shop">Select Shop</string>
+    <string name="lbl_no_pickup_order_found">No pickup order found</string>
+    <string name="lbl_no_deliver_order_found">No deliver order found</string>
+
 
     <!--    <string name=""></string>-->
 
@@ -194,9 +199,33 @@
     <string name="lbl_5_hours">5\nHours</string>
     <string name="lbl_skip_item_lazy_order">Skip Item Lazy Order</string>
     <string name="lbl_services">Services</string>
-    <!--        <string name=""></string>-->
-
     <!--    <string name=""></string>-->
+
+
+    //Driver New
+    <string name="lbl_pick_ups">PickUps</string>
+    <string name="lbl_drops">Drops</string>
+    <string name="lbl_display_pick_ups">PickUps (%d)</string>
+    <string name="lbl_display_drops">Drops (%d)</string>
+    <string name="lbl_availability">Availability:</string>
+    <string name="lbl_pick_up_order">PickUp Order</string>
+    <string name="lbl_drop_order">Drop Order</string>
+    <string name="lbl_pick_up_details">PickUp Details</string>
+    <string name="lbl_drop_details">Drop Details</string>
+    <string name="lbl_pick_up_order_number">PickUp-Order No:</string>
+    <string name="lbl_drop_order_number">Drop-Order No:</string>
+    <string name="lbl_name">Name:</string>
+    <string name="lbl_mobile_no">Mobile No:</string>
+    <string name="lbl_confirm_pickup">Confirm PickUp</string>
+    <string name="lbl_drop">Drop</string>
+    <string name="lbl_pick_up_note">PickUp Note:</string>
+    <string name="hint_enter_pick_up_note">Enter Pickup notes:</string>
+    <string name="lbl_drop_note">Drop Note:</string>
+    <string name="hint_enter_drop_note">Enter Drop notes:</string>
+    <string name="lbl_submit">Submit</string>
+    <string name="lbl_track">Track</string>
+
+    <!--        <string name=""></string>-->
 
     <integer-array name="navigationItemsDrawable">
         <item>@drawable/ic_nav_my_profile</item>
